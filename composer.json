@@ -1,0 +1,21 @@
+{
+  "name": "magentoese/b2b-order-approval-sample-data",
+  "description": "",
+  "version": "1.0.0",
+  "require": {
+    "php": "~7.1.0|~7.2.0",
+    "accorin/module-orderapprovals":"*"
+  },
+  "type": "magento2-module",
+  "license": [
+    "BSD-3-Clause"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "MagentoEse\\B2bOrderApprovalSampleData\\": ""
+    }
+  }
+}

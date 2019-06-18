@@ -1,0 +1,3 @@
+role_name,company_name,purchasing_level,resource_ids,users
+Buyer,Vandelay Industries,1,"Magento_Company::index,Accorin_CompanyAddressBook::all,Accorin_CompanyAddressBook::view_address,Accorin_CompanyAddressBook::set_billing_address,Accorin_CompanyAddressBook::set_shipping_address","ckramer@thelumastory.com,ebenes@thelumastory.com"
+Manager,Vandelay Industries,5,Magento_Sales::all,gcostanza@thelumastory.com
