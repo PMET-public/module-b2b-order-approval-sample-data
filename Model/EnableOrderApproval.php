@@ -8,6 +8,7 @@ namespace MagentoEse\B2bOrderApprovalSampleData\Model;
 
 
 use Magento\Company\Api\CompanyRepositoryInterface;
+use Magento\Company\Model\CompanyFactory;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Company\Api\Data\CompanyInterface;
 
@@ -17,13 +18,17 @@ class EnableOrderApproval
     /** @var CompanyRepositoryInterface  */
     private $companyRepository;
 
+    /** @var CompanyFactory  */
+    private $companyFactory;
+
     /** @var SearchCriteriaBuilder  */
     private $searchCriteriaBuilder;
 
 
-    public function __construct(CompanyRepositoryInterface $companyRepository, SearchCriteriaBuilder $searchCriteriaBuilder)
+    public function __construct(CompanyRepositoryInterface $companyRepository, CompanyFactory $companyFactory, SearchCriteriaBuilder $searchCriteriaBuilder)
     {
         $this->companyRepository = $companyRepository;
+        $this->companyFactory = $companyFactory;
         $this->searchCriteriaBuilder =  $searchCriteriaBuilder;
     }
 
@@ -47,7 +52,8 @@ class EnableOrderApproval
      */
     public function enableOrderApproval($companyId)
     {
-        $company = $this->companyRepository->get($companyId);
+        $company = $this->companyFactory->create();
+        $company->load($companyId);
         $company->setIsOrderapprovalsEnable(1);
         $this->companyRepository->save($company);
     }
