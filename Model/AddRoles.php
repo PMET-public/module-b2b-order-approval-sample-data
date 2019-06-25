@@ -12,7 +12,6 @@ use Magento\Company\Api\RoleRepositoryInterface;
 use Magento\Company\Api\Data\PermissionInterfaceFactory as PermissionInterface;
 use Accorin\OrderApprovals\Model\RoleLevelFactory as RoleLevel;
 use Magento\Company\Model\UserRoleManagement;
-use Accorin\OrderApprovals\Model\ApprovalRulesFactory;
 use Magento\Framework\Setup\SampleData\Context as SampleDataContext;
 use Magento\Company\Api\CompanyRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -80,8 +79,9 @@ class AddRoles
     {
         foreach ($fixtures as $fileName) {
             $fileName = $this->fixtureManager->getFixture($fileName);
+
             if (!file_exists($fileName)) {
-                throw new Exception('File not found: '.$fileName);
+                continue;
             }
 
             $rows = $this->csvReader->getData($fileName);
